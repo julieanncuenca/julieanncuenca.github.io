@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Simple Website with Animated Background</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      /* Navbar CSS */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: white;
+      }
+
+      .nav-item .nav-link {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 2px solid #28a745;
+        border-radius: 15px;
+        text-align: center;
+        background-color: transparent;
+        color: #28a745;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 0 10px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .nav-link:hover {
+        background-color: #28a745;
+        color: white;
+      }
+
+      /* Animated Gradient Background */
+      .animated-bg {
+        animation: gradientAnimation 8s ease infinite;
+        background: linear-gradient(45deg, #81c784, #4caf50, #1b5e20, #a1f0c4);
+        background-size: 400% 400%;
+        color: white;
+        padding: 80px 0;
+      }
+
+      /* Keyframes for animated gradient */
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <a class="navbar-brand text-success" href="#">MyWebsite</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#introduction">Introduction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Introduction Section -->
+    <section
+      id="introduction"
+      class="position-relative animated-bg"
+      style="
+        padding: 100px 20px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      "
+    >
+      <!-- Content Container (Above the Circles) -->
+      <div
+        class="container"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          max-width: 1200px;
+          gap: 30px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          border-radius: 12px;
+          background-color: #fff;
+          padding: 40px;
+          position: relative;
+          z-index: 2;
+        "
+      >
+        <!-- Image on the Left -->
+        <div
+          class="image-container"
+          style="
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            overflow: hidden;
+            border-radius: 12px;
+          "
+        >
+          <img
+            src="cuenca_img/cuenca.png"
+            alt="Your Image"
+            style="
+              width: 120%;
+              height: 120%;
+              object-fit: cover;
+              border-radius: 20px;
+              transition: transform 0.3s ease-in-out;
+            "
+            onmouseover="this.style.transform='scale(1.1)'"
+            onmouseout="this.style.transform='scale(1)'"
+          />
+        </div>
+
+        <!-- Text on the Right -->
+        <div
+          class="text-container"
+          style="
+            flex: 2;
+            min-width: 300px;
+            max-width: 600px;
+            padding: 20px;
+            text-align: left;
+          "
+        >
+          <h2 style="font-size: 2.5rem; margin-bottom: 15px; color: #333">
+            Hello, I’m Julie Ann Cuenca!
+          </h2>
+
+          <!-- Typing Effect Text -->
+          <p
+            id="typing-text"
+            style="font-size: 1.4rem; line-height: 1.8; color: #555"
+          ></p>
+
+          <!-- Social Media Links -->
+          <div class="social-media" style="margin-top: 20px">
+            <a
+              href="https://www.facebook.com/lianxcv"
+              target="_blank"
+              style="margin-right: 10px"
+            >
+              <img
+                src="cuenca_img/fb.jpg"
+                alt="Facebook"
+                style="width: 40px; height: 40px"
+              />
+            </a>
+            <a
+              href="https://x.com/Juliana_mdj"
+              target="_blank"
+              style="margin-right: 10px"
+            >
+              <img
+                src="cuenca_img/twitter_logo.jpg"
+                alt="Twitter"
+                style="width: 40px; height: 40px"
+              />
+            </a>
+
+            <a href="https://www.instagram.com/yourprofile" target="_blank">
+              <img
+                src="cuenca_img/insta.jpg"
+                alt="Instagram"
+                style="width: 40px; height: 40px"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const text =
+        "Welcome to my website! I'm a passionate developer and designer with a focus on creating stunning, user-friendly web experiences.";
+
+      let index = 0;
+      let isDeleting = false;
+      const typingText = document.getElementById("typing-text");
+
+      function typeEffect() {
+        // Type phase
+        if (!isDeleting && index < text.length) {
+          typingText.innerHTML += text.charAt(index);
+          index++;
+          setTimeout(typeEffect, 50); // Adjust speed (50ms per character)
+        }
+        // Delete phase
+        else if (isDeleting && index > 0) {
+          typingText.innerHTML = typingText.innerHTML.slice(0, -1);
+          index--;
+          setTimeout(typeEffect, 50); // Adjust speed (50ms per character)
+        }
+
+        // Switch between typing and deleting
+        if (index === text.length) {
+          isDeleting = true; // Start deleting
+        } else if (index === 0 && isDeleting) {
+          isDeleting = false; // Start typing again
+        }
+      }
+
+      window.onload = typeEffect;
+    </script>
+
+    <!-- Second Introduction Section with Bootstrap and Original Background Styles -->
+    <section
+      id="introduction-2"
+      class="d-flex align-items-center justify-content-center position-relative animated-bg"
+      style="
+        padding: 100px 20px;
+        min-height: auto; /* Allows dynamic height based on content */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #eaf4fc;
+        flex-direction: column; /* Stack content vertically if needed */
+      "
+    >
+      <div class="container mb-5">
+        <div class="row">
+          <!-- Left Side: Image with Square Border -->
+          <div class="col-md-4 d-flex justify-content-center">
+            <div
+              class="border p-2"
+              style="
+                max-width: 400px;
+                border: 2px solid #ccc;
+                border-radius: 20px;
+              "
+            >
+              <img
+                src="cuenca_img/for resume.jpg"
+                alt="Your Portrait"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+
+          <!-- Right Side: Text Content -->
+          <div class="col-md-8 d-flex flex-column justify-content-center">
+            <h2 class="fw-bold">Digital Artist & Web Developer</h2>
+            <p class="lead">
+              Pursuing to master full web development and graphic design.
+            </p>
+
+            <ul class="list-unstyled mt-3">
+              <li><strong>Full Name:</strong> Julie Ann D. Cuenca</li>
+              <li><strong>Email:</strong> julieanncuenca16@mail.com</li>
+              <li><strong>Degree:</strong> BS Information Technology</li>
+              <li><strong>Address:</strong> Butuan, Philippines</li>
+              <li><strong>Phone Number:</strong> +63 992 246 1269</li>
+            </ul>
+
+            <p class="mt-3">
+              I am currently studying Bachelor of Science in Information
+              Technology. I am passionate about becoming well-versed in various
+              IT-related fields, particularly in full web development and
+              graphic design. I am also available for freelance work and eager
+              to take on new challenges in the digital world.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    <!-- Resume Section -->
+<section id="resume" class="section py-5" style="background-color: #f8f9fa;">
+  <div class="container text-center" style="color: black;">
+    <h3 class="fw-bold mb-4">My Resume</h3>
+
+    <!-- Contact Information -->
+    <div class="text-start mb-4">
+      <h4 class="fw-bold">Julie Ann Cuenca</h4>
+      <p>Pinamanculan, Butuan City 8600</p>
+      <p><a href="mailto:julieanncuenca16@gmail.com" style="color: black;">julieanncuenca16@gmail.com</a></p>
+      <p>+639922461269</p>
+    </div>
+
+    <!-- Education & Work Experience -->
+    <div class="row">
+      <!-- Education Section -->
+      <div class="col-md-6 text-start">
+        <h4 class="fw-bold">Education</h4>
+        <p><strong>Bachelor of Science in Information Technology</strong></p>
+        <p>Caraga State University, Ampayon, Butuan City 8600</p>
+      </div>
+
+      <!-- Work Experience Section -->
+      <div class="col-md-6 text-start">
+        <h4 class="fw-bold">Work Experience</h4>
+        <p><strong>Attendance Management System</strong></p>
+        <p><strong>Social Media Management</strong></p>
+        <p><strong>Poster and Logo Design</strong></p>
+      </div>
+    </div>
+
+    <!-- Training and Seminars -->
+    <div class="mt-4 text-start">
+      <h4 class="fw-bold">Training and Seminars</h4>
+      <p>
+        <strong>SKMT Training</strong> <br>
+        The SKMT or Sangguniang Kabataan Mandatory Training covers various topics including: Digital Governance and E-Government, Cyber Security and Data Privacy, Social Media Management and Digital Communication, Digital Literacy and Skills Development, and Data Analytics for Decision Making.
+      </p>
+    </div>
+
+   
+
+  <!-- Portfolio Section -->
+<section id="portfolio" class="animated-bg section d-flex align-items-center" style="padding: 80px 20px; min-height: 100vh">
+  <div class="container text-center">
+    <h2 class="mb-3">Portfolio</h2>
+    <p class="mb-5">Here are some of my past projects:</p>
+
+    <div class="row justify-content-center">
+      <!-- Work Column -->
+      <div class="col-md-6 col-lg-5 mb-4">
+        <div class="portfolio-item text-center border rounded p-4" style="border: 2px solid black">
+          <h3 class="mb-4">Work</h3>
+          <div class="row">
+            <div class="col-12 mb-4">
+              <div class="d-flex flex-column flex-md-row align-items-center">
+                <img src="cuenca_img/f_tarp.jpg" alt="Work 1" class="img-fluid rounded shadow me-md-3 mb-2 mb-md-0" style="height: 150px; object-fit: cover;">
+                <p class="text-start">Dynamic graphic designer with a passion for crafting visually compelling designs.</p>
+              </div>
+            </div>
+            <!-- Additional Work Items -->
+            <div class="col-12 mb-4">
+              <div class="d-flex flex-column flex-md-row align-items-center">
+                <img src="cuenca_img/vid_editor.jpg" alt="Work 2" class="img-fluid rounded shadow me-md-3 mb-2 mb-md-0" style="height: 150px; object-fit: cover;">
+                <p class="text-start">Skilled in video editing, crafting visually engaging.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Achievements Column -->
+      <div class="col-md-6 col-lg-5 mb-4">
+        <div class="portfolio-item text-center border rounded p-4" style="border: 2px solid black">
+          <h3 class="mb-4">My Achievements</h3>
+          <div class="row">
+            <div class="col-12 mb-4">
+              <div class="d-flex flex-column flex-md-row align-items-center">
+                <img src="cuenca_img/Introduction to SQL_certificate.jpg" alt="Achievement 1" class="img-fluid rounded shadow me-md-3 mb-2 mb-md-0" style="height: 150px; object-fit: cover;">
+                <p class="text-start">Achievement 1: SQL Certificate</p>
+              </div>
+            </div>
+            <!-- Additional Achievement Items -->
+            <div class="col-12 mb-4">
+              <div class="d-flex flex-column flex-md-row align-items-center">
+                <img src="cuenca_img/html cerficate.jpg" alt="Achievement 2" class="img-fluid rounded shadow me-md-3 mb-2 mb-md-0" style="height: 150px; object-fit: cover;">
+                <p class="text-start">Achievement 2: HTML Certificate</p>
+              </div>
+            </div>
+            <div class="col-12 mb-4">
+              <div class="d-flex flex-column flex-md-row align-items-center">
+                <img src="cuenca_img/intro_css.jpg" alt="Achievement 3" class="img-fluid rounded shadow me-md-3 mb-2 mb-md-0" style="height: 150px; object-fit: cover;">
+                <p class="text-start">Achievement 3: CSS Certificate</p>
+              </div>
+            </div>
+            <div class="col-12 mb-4">
+              <div class="d-flex flex-column flex-md-row align-items-center">
+                <img src="cuenca_img/Introduction to JavaS.jpg" alt="Achievement 4" class="img-fluid rounded shadow me-md-3 mb-2 mb-md-0" style="height: 150px; object-fit: cover;">
+                <p class="text-start">Achievement 4: JavaScript Certificate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Skills Section -->
+    <section
+      id="skills"
+      class="animated-bg text-center"
+      style="padding: 80px 20px; min-height: 100vh; background-color: #f8f9fa"
+    >
+      <div class="container">
+        <h2 style="margin-bottom: 20px; font-size: 2.5rem; color: #faf5f5">
+          Skills
+        </h2>
+        <p style="margin-bottom: 40px; font-size: 1.2rem; color: #666">
+          Here are some of the skills I possess:
+        </p>
+
+        <div class="skills-container" style="max-width: 800px; margin: auto">
+          <div class="skill" style="margin-bottom: 30px">
+            <h5 style="text-align: left; color: #333">HTML</h5>
+            <div
+              class="progress"
+              style="
+                height: 30px;
+                background-color: #f3f3f3;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+              "
+            >
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="
+                  width: 90%;
+                  background-color: #28a745;
+                  color: white;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                aria-valuenow="90"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                90%
+              </div>
+            </div>
+          </div>
+
+          <div class="skill" style="margin-bottom: 30px">
+            <h5 style="text-align: left; color: #333">CSS</h5>
+            <div
+              class="progress"
+              style="
+                height: 30px;
+                background-color: #f3f3f3;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+              "
+            >
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="
+                  width: 85%;
+                  background-color: #28a745;
+                  color: white;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                aria-valuenow="85"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                85%
+              </div>
+            </div>
+          </div>
+
+          <div class="skill" style="margin-bottom: 30px">
+            <h5 style="text-align: left; color: #333">JavaScript</h5>
+            <div
+              class="progress"
+              style="
+                height: 30px;
+                background-color: #f3f3f3;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+              "
+            >
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="
+                  width: 75%;
+                  background-color: #28a745;
+                  color: white;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                aria-valuenow="75"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                75%
+              </div>
+            </div>
+          </div>
+
+          <div class="skill" style="margin-bottom: 30px">
+            <h5 style="text-align: left; color: #333">SQL</h5>
+            <div
+              class="progress"
+              style="
+                height: 30px;
+                background-color: #f3f3f3;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+              "
+            >
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="
+                  width: 70%;
+                  background-color: #28a745;
+                  color: white;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                aria-valuenow="70"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                70%
+              </div>
+            </div>
+          </div>
+
+          <div class="skill" style="margin-bottom: 30px">
+            <h5 style="text-align: left; color: #333">Bootstrap</h5>
+            <div
+              class="progress"
+              style="
+                height: 30px;
+                background-color: #f3f3f3;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+              "
+            >
+              <div
+                class="progress-bar"
+                role="progressbar"
+                style="
+                  width: 80%;
+                  background-color: #28a745;
+                  color: white;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                aria-valuenow="80"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                80%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section
+      id="contact"
+      class="animated-bg text-center position-relative"
+      style="
+        padding: 80px 20px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      "
+    >
+      <!-- Decorative Circle in the Background -->
+      <div
+        class="position-absolute bg-info rounded-circle"
+        style="
+          width: 300px;
+          height: 300px;
+          top: 10%;
+          left: 15%;
+          opacity: 0.15;
+          z-index: 1;
+        "
+      ></div>
+      <div
+        class="position-absolute bg-warning rounded-circle"
+        style="
+          width: 250px;
+          height: 250px;
+          bottom: 10%;
+          right: 15%;
+          opacity: 0.2;
+          z-index: 1;
+        "
+      ></div>
+
+      <div
+        class="container"
+        style="
+          background-color: #fff;
+          padding: 40px;
+          border-radius: 12px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          max-width: 800px;
+          position: relative;
+          z-index: 2;
+        "
+      >
+        <h2 style="margin-bottom: 20px; font-size: 2rem; color: #333">
+          Contact Information
+        </h2>
+        <p style="margin-bottom: 40px; font-size: 1.1rem; color: #555">
+          If you would like to get in touch, please feel free to reach out:
+        </p>
+
+        <!-- Contact Information List -->
+        <ul
+          class="list-unstyled"
+          style="
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            text-align: left;
+            line-height: 2;
+          "
+        >
+          <li>
+            📧 Email:
+            <a href="mailto:Julieanncuenca16@gmail.com"
+              >Julieanncuenca16@gmail.com</a
+            >
+          </li>
+          <li>📱 Phone: <a href="tel:+639922461269">+63 992 246 1269</a></li>
+          <li>
+            💼 LinkedIn:
+            <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank"
+              >My Gmail</a
+            >
+          </li>
+          <li>
+            📘 Facebook:
+            <a href="https://www.facebook.com/lianxcv" target="_blank"
+              >Facebook Profile</a
+            >
+          </li>
+        </ul>
+
+        <!-- 2x2 Social Media Image Grid -->
+        <div
+          class="d-flex flex-wrap justify-content-center gap-3"
+          style="margin-top: 30px"
+        >
+          <!-- Facebook -->
+          <div
+            class="rounded border border-primary"
+            style="width: 150px; height: 150px; overflow: hidden"
+          >
+            <a href="https://www.facebook.com/lianxcv" target="_blank">
+              <img
+                src="cuenca_img/fb.jpg"
+                alt="Facebook"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </a>
+          </div>
+
+          <!-- Twitter -->
+          <div
+            class="rounded border border-secondary"
+            style="width: 150px; height: 150px; overflow: hidden"
+          >
+            <a href="https://x.com/Juliana_mdj" target="_blank">
+              <img
+                src="cuenca_img/twitter_logo.jpg"
+                alt="Twitter"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </a>
+          </div>
+
+          <!-- Instagram -->
+          <div
+            class="rounded border border-danger"
+            style="width: 150px; height: 150px; overflow: hidden"
+          >
+            <a href="https://www.instagram.com/yourprofile" target="_blank">
+              <img
+                src="cuenca_img/insta.jpg"
+                alt="Instagram"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </a>
+          </div>
+
+          <!-- LinkedIn -->
+          <div
+            class="rounded border border-success"
+            style="width: 150px; height: 150px; overflow: hidden"
+          >
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank">
+              <img
+                src="cuenca_img/gmail.jpg"
+                alt="LinkedIn"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-success text-white text-center py-3">
+      <p>&copy; 2023 MyWebsite. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
